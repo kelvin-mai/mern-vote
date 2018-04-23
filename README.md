@@ -1,6 +1,6 @@
 # Full Stack App
 
-Starting a full stack (MEAN/MERN) app before having an idea
+Starting a MEAN full stack app before having an idea
 
 * TODO: Come up with idea
 * TODO: Update Readme
@@ -15,3 +15,13 @@ PORT = 4000
 DATABASE = 'mongodb://localhost/<DATABASE_NAME>'
 SECRET = 'ThisIsATemporarySecretKey'
 ```
+
+## Built with
+
+* nodejs
+* express
+* mongodb
+* mongoose
+* bcrypt
+* jsonwebtoken
+* angular 6
