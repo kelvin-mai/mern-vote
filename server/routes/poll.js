@@ -1,13 +1,16 @@
 const router = require('express').Router();
 const handle = require('../handlers');
+const auth = require('../middleware/auth');
 
-router.route('/').get(handle.showPolls);
-
-router.route('/new').post();
+router
+	.route('/')
+	.get(handle.showPolls)
+	.post(auth, handle.createPoll);
 
 router
 	.route('/:id')
 	.get(handle.getPoll)
-	.delete(handle.deletePoll);
+	.post(auth, handle.vote)
+	.delete(auth, handle.deletePoll);
 
 module.exports = router;
