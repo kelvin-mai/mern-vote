@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ApiService } from '../../services/api.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  constructor(private api: ApiService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  logout() {
+    console.log(this.api.token);
+    if (this.api.token) {
+      this.api.token = '';
+    }
+    console.log(this.api.token);
   }
-
 }

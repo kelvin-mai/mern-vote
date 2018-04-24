@@ -12,6 +12,20 @@ exports.showPolls = async (req, res, next) => {
 	}
 };
 
+exports.usersPolls = async (req, res, next) => {
+	const { id } = req.decoded;
+	try {
+		const user = await db.User.findById(id).populate('polls');
+
+		return res.status(200).json(user.polls);
+	} catch (err) {
+		return next({
+			status: 400,
+			message: err.message
+		});
+	}
+};
+
 exports.createPoll = async (req, res, next) => {
 	const { id } = req.decoded;
 	const { question, options } = req.body;
@@ -24,6 +38,8 @@ exports.createPoll = async (req, res, next) => {
 			newPoll.options.push({ option, votes: 0 });
 		});
 		const poll = await db.Poll.create(newPoll);
+		user.polls.push(poll._id);
+		await user.save();
 
 		return res.status(201).json(poll);
 	} catch (err) {

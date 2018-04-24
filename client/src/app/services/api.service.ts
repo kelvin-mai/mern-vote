@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,32 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   get token() {
-    return;
+    return localStorage.getItem('token');
   }
-  set token(val: string) {}
-
-  get(link: string) {
-    return this.http.get(`${this.API}/${link}`);
+  set token(val: string) {
+    val === '' ? localStorage.clear() : localStorage.setItem('token', val);
   }
 
-  post(link: string, body: any) {
-    return this.http.post(`${this.API}/${link}`, body);
-  }
-
-  auth(link: string, body: any) {
+  auth(link: string, body: any): Observable<any> {
     return this.http.post(`${this.API}/auth/${link}`, body);
+  }
+
+  allPolls(): Observable<any> {
+    return this.http.get(`${this.API}/api/poll/`);
+  }
+  usersPosts(): Observable<any> {
+    return this.http.get(`${this.API}/api/poll/user`);
+  }
+  createPoll(body: any) {
+    return this.http.post(`${this.API}/api/poll/`, body);
+  }
+  getPoll(id: string) {
+    return this.http.get(`${this.API}/api/poll/${id}`);
+  }
+  castVote(id: string, body: any) {
+    return this.http.post(`${this.API}/api/poll/${id}`, body);
+  }
+  deletePoll(id: string) {
+    return this.http.delete(`${this.API}/api/poll/${id}`);
   }
 }

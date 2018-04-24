@@ -1,13 +1,11 @@
+:root {
+  --bg-blue: #448ef6;
+  --bg-blue-light: #65daf7;
+  --yellow: #ffe981;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: var(--yellow-pale);
-}
-
-:root {
-  --orange: #ff7777;
-  --yellow: #fff195;
-  --yellow-pale: #fcffbf;
-  --pink: #f5e9ff;
 }

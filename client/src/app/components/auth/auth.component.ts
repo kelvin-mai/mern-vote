@@ -27,8 +27,8 @@ export class AuthComponent implements OnInit {
       const data: any = await this.api
         .auth(authType, { username, password })
         .toPromise();
-
-      console.log(data);
+      this.api.token = data.token;
+      console.log(this.api.token);
     } catch (err) {
       console.log(err);
     }

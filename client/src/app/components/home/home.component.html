@@ -1,3 +1,16 @@
-<p>
-  home works!
-</p>
+<div class="Home">
+	<h1 class="Home-title">Voting Application</h1>
+
+	<ul *ngIf="polls">
+		<li *ngFor="let poll of polls">
+			<div>
+				{{ poll.question }}
+				<ul>
+					<li *ngFor="let option of poll.options">
+						{{ option.option }} {{ option.votes }}
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
