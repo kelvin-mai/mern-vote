@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		required: true,
@@ -11,7 +11,12 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true
-	}
+	},
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	polls: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Poll' }]
 });
 
 userSchema.pre('save', async function(next) {

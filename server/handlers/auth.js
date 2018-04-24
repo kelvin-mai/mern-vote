@@ -1,6 +1,19 @@
 const db = require('../models');
 const jwt = require('jsonwebtoken');
 
+// for development only
+exports.getUsers = async (req, res, next) => {
+	try {
+		const users = await db.User.find();
+		return res.status(200).json(users);
+	} catch (err) {
+		return next({
+			status: 400,
+			message: err.message
+		});
+	}
+};
+
 exports.register = async (req, res, next) => {
 	try {
 		const user = await db.User.create(req.body);
@@ -12,7 +25,7 @@ exports.register = async (req, res, next) => {
 			},
 			process.env.SECRET
 		);
-		return res.status(200).json({
+		return res.status(201).json({
 			id,
 			username,
 			token
