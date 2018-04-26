@@ -1,0 +1,8 @@
+<h3>{{ poll.question }}</h3>
+
+<form (ngSubmit)="handleSubmit()" >
+	<input name="option_{{ i }}" type="text" *ngFor="let option of poll.options; let i = index; trackBy: handleTrackBy" [(ngModel)]="poll.options[i]" >
+	<button type="submit">Submit</button>
+</form>
+
+<button (click)="addInput()" >Click Me</button>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { CreatePollComponent } from './components/create-poll/create-poll.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: AuthComponent
+  },
+  {
+    path: 'poll/new',
+    component: CreatePollComponent
   },
   {
     path: '**',

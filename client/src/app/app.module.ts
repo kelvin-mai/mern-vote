@@ -9,9 +9,16 @@ import { ApiService } from './services/api.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CreatePollComponent } from './components/create-poll/create-poll.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HomeComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    HomeComponent,
+    NavbarComponent,
+    CreatePollComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [ApiService],
   bootstrap: [AppComponent]
