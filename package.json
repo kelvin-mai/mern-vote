@@ -1,0 +1,16 @@
+{
+	"name": "vote-app",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/kelvin-mai/mean-vote.git",
+	"author": "Kelvin Mai <kelvin.mai002@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "concurrently \"yarn client\" \"yarn server\"",
+		"client": "cd client && ng serve",
+		"server": "cd server && yarn start"
+	},
+	"dependencies": {
+		"concurrently": "^3.5.1"
+	}
+}
