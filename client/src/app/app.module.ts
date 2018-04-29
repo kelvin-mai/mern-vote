@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './services/api.service';
+import { GuardService } from './services/guard.service';
 import { AuthComponent } from './components/auth/auth.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -20,7 +21,7 @@ import { CreatePollComponent } from './components/create-poll/create-poll.compon
     CreatePollComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [ApiService],
+  providers: [ApiService, GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

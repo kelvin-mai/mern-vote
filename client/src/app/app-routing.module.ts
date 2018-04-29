@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { GuardService } from './services/guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { CreatePollComponent } from './components/create-poll/create-poll.component';
@@ -19,8 +20,9 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
-    path: 'poll/new',
-    component: CreatePollComponent
+    path: 'profile/poll/new',
+    component: CreatePollComponent,
+    canActivate: [GuardService]
   },
   {
     path: '**',

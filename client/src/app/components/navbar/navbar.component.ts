@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 
@@ -8,7 +9,7 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -18,5 +19,6 @@ export class NavbarComponent implements OnInit {
       this.api.token = '';
     }
     console.log(this.api.token);
+    this.router.navigate(['/']);
   }
 }
