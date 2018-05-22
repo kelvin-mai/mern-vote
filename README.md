@@ -1,6 +1,6 @@
 # Vote App
 
-freeCodeCamp Build a Voting App created with the MEAN stack
+freeCodeCamp Build a Voting App created with the MERN stack
 
 ## User Stories
 
@@ -31,4 +31,4 @@ SECRET = 'ThisIsATemporarySecretKey'
 * mongoose
 * bcrypt
 * jsonwebtoken
-* angular 6
+* react
