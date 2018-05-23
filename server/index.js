@@ -13,13 +13,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/auth', routes.auth);
+app.use('/api/auth', routes.auth);
 app.use('/api/poll', routes.poll);
 
 app.use((req, res, next) => {
-	let err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 app.use(handle.error);
 
