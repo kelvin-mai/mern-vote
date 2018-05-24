@@ -6,6 +6,7 @@ import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
 
 import Auth from './Auth';
+import Poll from './Poll';
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -17,12 +18,19 @@ if (localStorage.jwtToken) {
   }
 }
 
-const App = () => (
+const UITest = () => (
   <Provider store={store}>
     <Fragment>
+      <h3>Testing Auth Component: </h3>
       <Auth />
+      <hr />
+      <br />
+      <h3>Testing Poll Component: </h3>
+      <Poll />
+      <hr />
+      <br />
     </Fragment>
   </Provider>
 );
 
-export default App;
+export default UITest;

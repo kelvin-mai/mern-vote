@@ -24,9 +24,12 @@ export const logout = () => {
 export const authUser = (type, userData) => {
   return async dispatch => {
     try {
-      const user = await API.call('post', `auth/${type}`, userData);
-      localStorage.setItem('jwtToken', user.token);
-      API.token = user.token;
+      const { token, ...user } = await API.call(
+        'post',
+        `auth/${type}`,
+        userData,
+      );
+      localStorage.setItem('jwtToken', token);
       dispatch(setCurrentUser(user));
       dispatch(removeError());
     } catch (err) {
