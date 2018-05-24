@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 exports.getUsers = async (req, res, next) => {
   try {
     const users = await db.User.find();
+
     return res.status(200).json(users);
   } catch (err) {
     return next({
@@ -16,9 +17,10 @@ exports.getUsers = async (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const user = await db.User.create(req.body);
     const { id, username } = user;
+    const user = await db.User.create(req.body);
     const token = jwt.sign({ id, username }, process.env.SECRET);
+
     return res.status(201).json({
       id,
       username,
@@ -42,6 +44,7 @@ exports.login = async (req, res, next) => {
     });
     const { id, username } = user;
     const valid = await user.comparePassword(req.body.password);
+
     if (valid) {
       const token = jwt.sign({ id, username }, process.env.SECRET);
       return res.status(200).json({
@@ -50,12 +53,9 @@ exports.login = async (req, res, next) => {
         token,
       });
     } else {
-      return next({
-        status: 400,
-        message: 'Invalid Username/Password.',
-      });
+      throw new Error();
     }
   } catch (err) {
-    return next({ status: 400, message: 'Invalid Username/Password.' });
+    return next({ status: 400, message: 'Invalid Username/Password' });
   }
 };

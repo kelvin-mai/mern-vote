@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/auth', routes.auth);
-app.use('/api/poll', routes.poll);
+app.use('/api/polls', routes.poll);
 
 app.use((req, res, next) => {
   let err = new Error('Not Found');
