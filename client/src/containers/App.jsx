@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
-import decode from 'jwt-decode';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import decode from 'jwt-decode';
 
 import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
 
-import Auth from './Auth';
+import RouteViews from './RouteViews';
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -19,9 +20,11 @@ if (localStorage.jwtToken) {
 
 const App = () => (
   <Provider store={store}>
-    <Fragment>
-      <Auth />
-    </Fragment>
+    <Router>
+      <Fragment>
+        <RouteViews />
+      </Fragment>
+    </Router>
   </Provider>
 );
 

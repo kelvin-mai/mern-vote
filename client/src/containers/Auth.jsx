@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { authUser, logout } from '../store/actions/auth';
 
@@ -21,12 +22,15 @@ class Auth extends Component {
 
   handleSubmit(e) {
     const { username, password } = this.state;
+    const { authType } = this.props;
     e.preventDefault();
     console.log('Auth Component: ', username, password);
-    this.props.authUser('login', { username, password });
+    this.props.authUser(authType || 'login', { username, password });
   }
 
   render() {
+    // if (this.props.auth.isAuthenticated) return <Redirect to="/" />;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

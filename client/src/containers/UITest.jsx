@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import decode from 'jwt-decode';
 import { Provider } from 'react-redux';
 
@@ -20,7 +21,7 @@ if (localStorage.jwtToken) {
   }
 }
 
-const UITest = () => (
+const UITest = props => (
   <Provider store={store}>
     <Fragment>
       <h1>UI Test Page</h1>
@@ -35,7 +36,7 @@ const UITest = () => (
       <br />
 
       <h2>Testing Polls Component: </h2>
-      <Polls />
+      <Polls {...props} />
       <hr />
       <br />
 
@@ -47,4 +48,4 @@ const UITest = () => (
   </Provider>
 );
 
-export default UITest;
+export default withRouter(UITest);

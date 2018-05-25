@@ -25,6 +25,19 @@ export const getPolls = () => {
   };
 };
 
+export const getUserPolls = () => {
+  return async dispatch => {
+    try {
+      const polls = await API.call('get', 'polls/user');
+      dispatch(setPolls(polls));
+      dispatch(removeError());
+    } catch (err) {
+      const { error } = err.response.data;
+      dispatch(addError(error));
+    }
+  };
+};
+
 export const getCurrentPoll = path => {
   return async dispatch => {
     try {
