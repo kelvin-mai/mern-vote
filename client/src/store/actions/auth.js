@@ -1,4 +1,4 @@
-import { addError, removeError } from './errors';
+import { addError, removeError } from './error';
 import { SET_CURRENT_USER } from '../actionTypes';
 import API from '../../services/api';
 

@@ -1,2 +1,3 @@
 export * from './auth';
-export * from './errors';
+export * from './error';
+export * from './polls';

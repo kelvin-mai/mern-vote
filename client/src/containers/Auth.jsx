@@ -22,7 +22,7 @@ class Auth extends Component {
   handleSubmit(e) {
     const { username, password } = this.state;
     e.preventDefault();
-    console.log(username, password);
+    console.log('Auth Component: ', username, password);
     this.props.authUser('login', { username, password });
   }
 

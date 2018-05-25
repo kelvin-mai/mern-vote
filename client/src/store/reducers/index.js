@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import errors from './errors';
+import error from './error';
+import polls from './polls';
 
 export default combineReducers({
-  errors,
+  error,
+  polls,
 });
