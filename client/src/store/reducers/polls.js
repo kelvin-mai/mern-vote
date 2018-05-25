@@ -1,11 +1,18 @@
-import { SET_POLLS } from '../actionTypes';
+import { SET_POLLS, SET_CURRENT_POLL } from '../actionTypes';
 
-const DEFAULT_STATE = [];
-
-export default (state = DEFAULT_STATE, action) => {
+export const polls = (state = [], action) => {
   switch (action.type) {
     case SET_POLLS:
       return action.polls;
+    default:
+      return state;
+  }
+};
+
+export const currentPoll = (state = {}, action) => {
+  switch (action.type) {
+    case SET_CURRENT_POLL:
+      return action.poll;
     default:
       return state;
   }

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Poll from '../components/Poll';
-
-import { getPolls } from '../store/actions';
+import { getPolls, getCurrentPoll } from '../store/actions';
 
 class Polls extends Component {
   componentDidMount() {
@@ -14,7 +12,9 @@ class Polls extends Component {
 
   render() {
     const polls = this.props.polls.map(poll => (
-      <Poll poll={poll} key={poll._id} />
+      <div onClick={() => this.props.getCurrentPoll(poll._id)} key={poll._id}>
+        {poll.question}
+      </div>
     ));
     console.log('Polls Component: ', this.props.polls);
     return <div>{polls}</div>;
@@ -25,5 +25,5 @@ export default connect(
   store => ({
     polls: store.polls,
   }),
-  { getPolls },
+  { getPolls, getCurrentPoll },
 )(Polls);

@@ -6,6 +6,7 @@ import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
 
 import Auth from './Auth';
+import Poll from './Poll';
 import Polls from './Polls';
 import ErrorMessage from './ErrorMessage';
 
@@ -34,8 +35,12 @@ const UITest = () => (
       <br />
 
       <h2>Testing Polls Component: </h2>
-      <h3>Polls Component contains children: Poll Component</h3>
       <Polls />
+      <hr />
+      <br />
+
+      <h2>Testing Poll Component: </h2>
+      <Poll />
       <hr />
       <br />
     </Fragment>

@@ -3,6 +3,7 @@ const db = require('../models');
 exports.showPolls = async (req, res, next) => {
   try {
     const polls = await db.Poll.find().populate('user', ['username', 'id']);
+    // .populate('voted', ['username', 'id']);
 
     return res.status(200).json(polls);
   } catch (err) {
@@ -58,16 +59,9 @@ exports.vote = async (req, res, next) => {
       const poll = await db.Poll.findById(pollId);
       if (!poll) throw new Error('No poll found');
 
-      const validAnswers = poll.options.filter(
-        option => option.option === answer,
-      );
-      if (validAnswers === []) {
-        throw new Error('Please provide valid answer');
-      }
-
       const vote = poll.options.map(
         option =>
-          option.option == answer
+          option.option === answer
             ? {
                 option: option.option,
                 _id: option._id,
@@ -76,10 +70,14 @@ exports.vote = async (req, res, next) => {
             : option,
       );
 
-      if (
-        poll.voted.length === 0 ||
-        poll.voted.filter(user => user.toString === userId).length > 0
-      ) {
+      console.log('VOTE: USERID ', userId);
+      console.log('VOTE: poll.voted ', poll.voted);
+      console.log(
+        'VOTE: vote filter',
+        poll.voted.filter(user => user.toString() === userId).length,
+      );
+
+      if (poll.voted.filter(user => user.toString() === userId).length <= 0) {
         poll.voted.push(userId);
         poll.options = vote;
         await poll.save();
@@ -106,6 +104,7 @@ exports.getPoll = async (req, res, next) => {
       'username',
       'id',
     ]);
+    // .populate('voted', ['username', 'id']);
     if (!poll) throw new Error('No poll found');
 
     return res.status(200).json(poll);

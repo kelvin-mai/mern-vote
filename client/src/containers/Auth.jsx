@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { authUser } from '../store/actions/auth';
+import { authUser, logout } from '../store/actions/auth';
 
 class Auth extends Component {
   constructor(props) {
@@ -44,6 +44,8 @@ class Auth extends Component {
           />
           <button type="submit">Submit</button>
         </form>
+        <p>Logged in as: {this.props.auth && this.props.auth.user.username}</p>
+        <button onClick={this.props.logout}>Logout</button>
       </div>
     );
   }
@@ -51,8 +53,8 @@ class Auth extends Component {
 
 export default connect(
   store => ({
-    currentUser: store.currentUser,
+    auth: store.auth,
     errors: store.errors,
   }),
-  { authUser },
+  { authUser, logout },
 )(Auth);
