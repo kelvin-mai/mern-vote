@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { authUser, logout } from '../store/actions/auth';
+import { authUser, logout } from '../store/actions';
 
 class Auth extends Component {
   constructor(props) {
@@ -58,7 +58,6 @@ class Auth extends Component {
 export default connect(
   store => ({
     auth: store.auth,
-    errors: store.errors,
   }),
   { authUser, logout },
 )(Auth);
