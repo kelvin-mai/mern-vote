@@ -6,7 +6,7 @@ import { logout } from '../store/actions';
 
 const Navbar = ({ auth, logout }) => (
   <nav>
-    <p>Logged in as: {auth && auth.user.username}</p>
+    <p>Logged in as: {auth.isAuthenticated && auth.user.username}</p>
     <ul>
       <li>
         <Link to="/">Home</Link>

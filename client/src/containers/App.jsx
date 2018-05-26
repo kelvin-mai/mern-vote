@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
 
+import NavBar from './NavBar';
 import RouteViews from './RouteViews';
 
 if (localStorage.jwtToken) {
@@ -22,6 +23,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Fragment>
+        <NavBar />
         <RouteViews />
       </Fragment>
     </Router>

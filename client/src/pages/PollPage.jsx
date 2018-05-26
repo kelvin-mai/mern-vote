@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Poll from '../containers/Poll';
-import ErrorMessage from '../containers/ErrorMessage';
+import Poll from '../components/Poll';
+import ErrorMessage from '../components/ErrorMessage';
 
 const PollPage = ({ match, getPoll, poll }) => {
   const host = window.location.href;

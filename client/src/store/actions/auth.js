@@ -16,6 +16,7 @@ export const logout = () => {
     localStorage.clear();
     API.setToken(null);
     dispatch(setCurrentUser({}));
+    dispatch(removeError());
   };
 };
 

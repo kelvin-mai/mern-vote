@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import CreatePoll from '../containers/CreatePoll';
-import ErrorMessage from '../containers/ErrorMessage';
+import CreatePoll from '../components/CreatePoll';
+import ErrorMessage from '../components/ErrorMessage';
 
 const CreatePollPage = ({ isAuthenticated }) => {
   if (!isAuthenticated) return <Redirect to="/login" />;
