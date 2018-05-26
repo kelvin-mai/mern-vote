@@ -27,33 +27,30 @@ class Auth extends Component {
   }
 
   render() {
+    const { username, password } = this.state;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            value={this.state.username}
+            value={username}
             name="username"
             onChange={this.handleChange}
+            autoComplete="off"
           />
           <input
             type="password"
-            value={this.state.password}
+            value={password}
             name="password"
             onChange={this.handleChange}
+            autoComplete="off"
           />
           <button type="submit">Submit</button>
         </form>
-        <p>Logged in as: {this.props.auth && this.props.auth.user.username}</p>
-        <button onClick={this.props.logout}>Logout</button>
       </div>
     );
   }
 }
 
-export default connect(
-  store => ({
-    auth: store.auth,
-  }),
-  { authUser, logout },
-)(Auth);
+export default connect(() => ({}), { authUser, logout })(Auth);

@@ -37,11 +37,11 @@ class CreatePoll extends Component {
   }
 
   render() {
-    const options = this.state.options.map((answer, i) => (
+    const options = this.state.options.map((option, i) => (
       <input
         type="text"
-        name={`answer_${i}`}
-        value={answer}
+        value={options}
+        placeholder="options"
         key={i}
         onChange={e => this.handleAnswer(e, i)}
       />
@@ -52,6 +52,7 @@ class CreatePoll extends Component {
         <input
           type="text"
           name="question"
+          placeholder="question"
           value={this.state.question}
           onChange={this.handleChange}
         />

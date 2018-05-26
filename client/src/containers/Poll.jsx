@@ -28,8 +28,6 @@ const Poll = ({ poll, vote }) => {
     ],
   };
 
-  console.log('Poll Component: ', poll);
-  console.log('Poll component: ', poll.options);
   return (
     <div>
       <h3>{poll.question}</h3>

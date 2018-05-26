@@ -6,6 +6,7 @@ import ErrorMessage from '../containers/ErrorMessage';
 
 const AuthPage = ({ authType, isAuthenticated }) => {
   if (isAuthenticated) return <Redirect to="/" />;
+
   return (
     <div>
       <ErrorMessage />

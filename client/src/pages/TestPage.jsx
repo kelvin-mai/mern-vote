@@ -6,10 +6,12 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 import { setToken, setCurrentUser, addError } from '../store/actions';
 
-import Auth from './Auth';
-import Poll from './Poll';
-import Polls from './Polls';
-import ErrorMessage from './ErrorMessage';
+import Auth from '../containers/Auth';
+import Poll from '../containers/Poll';
+import Polls from '../containers/Polls';
+import ErrorMessage from '../containers/ErrorMessage';
+import CreatePoll from '../containers/CreatePoll';
+import NavBar from '../containers/NavBar';
 
 if (localStorage.jwtToken) {
   setToken(localStorage.jwtToken);
@@ -25,25 +27,30 @@ const UITest = props => (
   <Provider store={store}>
     <Fragment>
       <h1>UI Test Page</h1>
+
+      <h2>Testing Navbar Component: </h2>
+      <NavBar />
+      <hr />
+
       <h2>Testing Error Component: </h2>
       <ErrorMessage />
       <hr />
-      <br />
 
       <h2>Testing Auth Component: </h2>
       <Auth />
       <hr />
-      <br />
+
+      <h2>Testing Create Poll Component: </h2>
+      <CreatePoll />
+      <hr />
 
       <h2>Testing Polls Component: </h2>
       <Polls {...props} />
       <hr />
-      <br />
 
       <h2>Testing Poll Component: </h2>
       <Poll />
       <hr />
-      <br />
     </Fragment>
   </Provider>
 );
