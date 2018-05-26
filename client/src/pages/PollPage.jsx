@@ -11,7 +11,6 @@ const PollPage = ({ match, getPoll, poll }) => {
     <div>
       <ErrorMessage />
       <Poll />
-      <button onClick={() => console.log(host)}>Share</button>
     </div>
   );
 };

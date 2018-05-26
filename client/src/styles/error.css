@@ -1,9 +1,9 @@
 .error {
-  background-color: #ff8a80;
+  background-color: var(--danger);
   text-align: center;
   color: white;
   width: 70%;
-  margin: auto;
+  margin: 1rem auto;
   padding: 0.5rem 0;
   border-radius: 0.5rem;
 }

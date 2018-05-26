@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Pie } from 'react-chartjs-2';
 
@@ -11,8 +11,9 @@ const Poll = ({ poll, vote }) => {
     poll.options.map(option => (
       <button
         onClick={() => vote(poll._id, { answer: option.option })}
+        className="button"
         key={option._id}>
-        {option.option} : {option.votes}
+        {option.option}
       </button>
     ));
 
@@ -30,8 +31,8 @@ const Poll = ({ poll, vote }) => {
 
   return (
     <div>
-      <h3>{poll.question}</h3>
-      <Fragment>{answers}</Fragment>
+      <h3 className="poll-title">{poll.question}</h3>
+      <div className="buttons_center">{answers}</div>
       <Pie data={data} />
     </div>
   );

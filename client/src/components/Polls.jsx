@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { getPolls, getUserPolls } from '../store/actions';
@@ -22,19 +22,25 @@ class Polls extends Component {
     const { getPolls, getUserPolls, auth } = this.props;
 
     const polls = this.props.polls.map(poll => (
-      <div onClick={() => this.handleSelect(poll._id)} key={poll._id}>
+      <li onClick={() => this.handleSelect(poll._id)} key={poll._id}>
         {poll.question}
-      </div>
+      </li>
     ));
 
     return (
-      <div>
-        <button onClick={getPolls}>All polls</button>
+      <Fragment>
         {auth.isAuthenticated && (
-          <button onClick={getUserPolls}>My polls</button>
+          <div className="buttons_center">
+            <button className="button" onClick={getPolls}>
+              All polls
+            </button>
+            <button className="button" onClick={getUserPolls}>
+              My polls
+            </button>
+          </div>
         )}
-        {polls}
-      </div>
+        <ul className="polls">{polls}</ul>
+      </Fragment>
     );
   }
 }
