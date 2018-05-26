@@ -38,6 +38,19 @@ export const getUserPolls = () => {
   };
 };
 
+export const createPoll = data => {
+  return async dispatch => {
+    try {
+      const poll = await API.call('post', 'polls', data);
+      dispatch(setCurrentPoll(poll));
+      dispatch(removeError());
+    } catch (err) {
+      const { error } = err.response.data;
+      dispatch(addError(error));
+    }
+  };
+};
+
 export const getCurrentPoll = path => {
   return async dispatch => {
     try {

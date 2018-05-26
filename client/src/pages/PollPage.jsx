@@ -1,14 +1,19 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 import Poll from '../containers/Poll';
 import ErrorMessage from '../containers/ErrorMessage';
 
-const PollPage = () => (
-  <div>
-    <ErrorMessage />
-    <Poll />
-  </div>
-);
+const PollPage = ({ match, getPoll, poll }) => {
+  const host = window.location.href;
+  getPoll(match.params.id);
+
+  return (
+    <div>
+      <ErrorMessage />
+      <Poll />
+      <button onClick={() => console.log(host)}>Share</button>
+    </div>
+  );
+};
 
 export default PollPage;

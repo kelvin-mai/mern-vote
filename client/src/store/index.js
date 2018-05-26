@@ -6,7 +6,7 @@ import rootReducer from './reducers';
 const DEFAULT_STATE = {
   polls: [],
   currentPoll: {
-    _id: 'aoeu',
+    _id: '5b086e20f7d2381502ce0e46',
     options: [],
     question: 'aaoeu',
   },

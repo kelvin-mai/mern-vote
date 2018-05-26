@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getPolls, getCurrentPoll, getUserPolls } from '../store/actions';
+import { getPolls, getUserPolls } from '../store/actions';
 
 class Polls extends Component {
   constructor(props) {
@@ -15,8 +15,7 @@ class Polls extends Component {
   }
 
   handleSelect(id) {
-    this.props.getCurrentPoll(id);
-    this.props.history.push('/poll');
+    this.props.history.push(`/poll/${id}`);
   }
 
   render() {
@@ -40,5 +39,5 @@ export default connect(
   store => ({
     polls: store.polls,
   }),
-  { getPolls, getCurrentPoll, getUserPolls },
+  { getPolls, getUserPolls },
 )(Polls);
