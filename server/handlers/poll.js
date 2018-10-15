@@ -120,12 +120,19 @@ exports.deletePoll = async (req, res, next) => {
   const { id: pollId } = req.params;
   const { id: userId } = req.decoded;
   try {
+    let user = await db.User.findById(userId)
+    if(user.polls) { // not sure if necessary either...
+      user.polls = user.polls.filter(userPoll => {
+        return userPoll._id.toString() !== pollId.toString() // not sure if necessary to use toString()
+      })
+    }
+    
     const poll = await db.Poll.findById(pollId);
     if (!poll) throw new Error('No poll found');
     if (poll.user.toString() !== userId) {
       throw new Error('Unauthorized access');
     }
-
+    await user.save()
     await poll.remove();
     return res.status(202).json({ poll, deleted: true });
   } catch (err) {
