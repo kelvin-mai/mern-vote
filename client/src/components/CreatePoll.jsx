@@ -52,7 +52,7 @@ class CreatePoll extends Component {
 
     return (
       <form className="form" onSubmit={this.handleSubmit}>
-        <label className="form-label" for="question">
+        <label className="form-label" htmlFor="question">
           question
         </label>
         <input
