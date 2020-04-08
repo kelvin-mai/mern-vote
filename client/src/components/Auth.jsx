@@ -32,7 +32,7 @@ class Auth extends Component {
     return (
       <div>
         <form className="form" onSubmit={this.handleSubmit}>
-          <label className="form-label" for="username">
+          <label className="form-label" htmlFor="username">
             username{' '}
           </label>
           <input
