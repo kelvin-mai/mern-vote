@@ -38,7 +38,7 @@ class CreatePoll extends Component {
 
   render() {
     const options = this.state.options.map((option, i) => (
-      <Fragment>
+      <Fragment key={i}>
         <label className="form-label">option</label>
         <input
           className="form-input"
